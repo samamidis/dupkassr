@@ -36,18 +36,18 @@ exports.nuxtssr = functions.https.onRequest(async (request, response) => {
   response.send(result.html)
 })
 // function handleRequest(req, res) {
-//   console.log("log3", req.headers.cookie)
-//   res.set("Cache-Control", "public, max-age=300, s-maxage=600")
-//   return new Promise((resolve, reject) => {
-//     nuxt.render(req, res, promise => {
-//       console.log("Nuxtrender", req.headers.cookie)
-//       promise.then(resolve).catch(reject)
-//     })
-//   })
-// }
+  console.log("log3", req.headers.cookie)
+  res.set("Cache-Control", "public, max-age=300, s-maxage=600")
+  return new Promise((resolve, reject) => {
+    nuxt.render(req, res, promise => {
+      console.log("Nuxtrender", req.headers.cookie)
+      promise.then(resolve).catch(reject)
+    })
+  })
+}
 
-// app.use(handleRequest)
-// exports.nuxtssr = functions.https.onRequest(app)
+app.use(handleRequest)
+exports.nuxtssr = functions.https.onRequest(app)
 
 // Tune these detection likelihoods to suit your app.
 // UNKNOWN	Unknown likelihood.
